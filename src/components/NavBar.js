@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar,Box,Toolbar,styled, Typography, MenuItem,Menu,InputBase,  } from '@mui/material';
+import { AppBar,Box,Toolbar,styled, Typography, MenuItem,Menu,InputBase, Divider, CssBaseline,  } from '@mui/material';
 import {Facebook,Instagram,Twitter,Menu as MenuImg} from "@mui/icons-material"
 
 
@@ -13,6 +13,7 @@ function NavBar() {
   const SocialBox=styled(Box)({
     display:"flex",
     gap:10,
+    cursor:'pointer'
   });
   const MenuBox=styled(Box)({
     display:'flex',
@@ -24,10 +25,10 @@ function NavBar() {
   });
   const menuItems=[
     {Name:'Home',Link:'/'},
-    {Name:"Products",Link:'#'},
-    {Name:'Portfolio',Link:'#'},
-    {Name:"Blog",Link:'#'},
-    {Name:"Contactus",Link:'#'},
+    {Name:"Products",Link:'/products'},
+    {Name:'Portfolio',Link:'/protfolio'},
+    {Name:"Blog",Link:'/blog'},
+    {Name:"Contact Us",Link:'/contact-us'},
   ];
   const StyledItems=styled(Typography)({
       cursor:'pointer',
@@ -37,7 +38,8 @@ function NavBar() {
   return (
 
     <div className="App">
-       <AppBar sx={{backgroundColor:'black'}}>
+      <CssBaseline />
+       <AppBar sx={{backgroundColor:'black',height:60,position:'static'}}>
         <StyledToolbar >
 
         <SocialBox sx={{}}>
@@ -66,10 +68,12 @@ function NavBar() {
         </SearchBox>
         
         </StyledToolbar>
+        
         <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         open={open}
+        
         onClose={()=>setOpen(!open)}
         anchorOrigin={{
           vertical: 'top',
@@ -79,10 +83,15 @@ function NavBar() {
           vertical: 'top',
           horizontal: 'left',
         }}
+        sx={{mt:6,display:{md:"none"}}}
       >
-        <Box sx={{width:350,height:"80vh"}}>
+        <Box sx={{width:{xs:180,md:300},height:"100%",}}>
           { menuItems.map((item)=>(
-          <MenuItem  sx={{padding:"10px" ,"&:hover":{color:"white",backgroundColor:'black'}}}>{item.Name}</MenuItem>
+            <>
+          <MenuItem  sx={{"&:hover":{color:"white",backgroundColor:'black'}}}>{item.Name} </MenuItem>
+          <Divider/>
+          
+          </>
          ))
          
          }
