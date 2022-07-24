@@ -1,13 +1,14 @@
-
 import { Box, Stack, styled, Typography } from '@mui/material';
 import * as React from 'react';
-import storeImg from "../assets/store.jpg"
+import kids from "../../assets/kids1.jpg"
+import men from "../../assets/men.webp"
+import women from "../../assets/women.jpeg"
+
 function Catagories() {
     const StyledCatagory=styled(Box)({
         width:"100%",
-        height:"30vh",
+        height:"100%",
         display:'flex',
-        backgroundImage: `url(${storeImg})`,
         backgroundRepeat:'no-repeat',
         backgroundSize:'cover',
         backgroundColor:'black',
@@ -32,12 +33,11 @@ function Catagories() {
     });
   return (
     <Box >
-        <Stack spacing={3} direction={{md:"row",xs:'column',sm:'row'}} margin={3}
-    
+        <Stack spacing={3} direction={{md:"row",xs:'column',sm:'row'}} margin={2}
         >
-            <StyledCatagory><StyledTitle>Men</StyledTitle></StyledCatagory>
-            <StyledCatagory><StyledTitle>Women</StyledTitle></StyledCatagory>
-            <StyledCatagory><StyledTitle>Kids</StyledTitle></StyledCatagory>
+            <StyledCatagory sx={{ backgroundImage: `url(${men})`,}}><StyledTitle><u>Men</u></StyledTitle></StyledCatagory>
+            <StyledCatagory sx={{ backgroundImage: `url(${women})`,}}><StyledTitle>Women</StyledTitle></StyledCatagory>
+            <StyledCatagory sx={{ backgroundImage: `url(${kids})`,}}><StyledTitle>Kids</StyledTitle></StyledCatagory>
         </Stack>
     </Box>
     );

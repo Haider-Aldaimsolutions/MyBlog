@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import storeImg from "../assets/store.jpg"
+import storeImg from "../../assets/Store.jpeg"
 import * as React from 'react';
 
 function Hero() {
@@ -14,7 +14,7 @@ function Hero() {
     )
   return (
     
-     <Box>
+     <Box sx={{mt:7}}>
           <Typography sx={{textAlign:'center',fontSize:'50px',fontWeight:'900'}}>
             Fashions <b style={{color:'red'}}>Blog</b>
           </Typography>

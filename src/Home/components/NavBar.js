@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { AppBar,Box,Toolbar,styled, Typography, MenuItem,Menu,InputBase, Divider, CssBaseline,  } from '@mui/material';
 import {Facebook,Instagram,Twitter,Menu as MenuImg} from "@mui/icons-material"
-
+import { NavLink } from 'react-router-dom';
 
 function NavBar() {
-
+  
   const [open,setOpen]=React.useState(false);
   const StyledToolbar=styled(Toolbar)({
     display:'flex',
@@ -39,19 +39,24 @@ function NavBar() {
 
     <div className="App">
       <CssBaseline />
-       <AppBar sx={{backgroundColor:'black',height:60,position:'static'}}>
+       <AppBar sx={{backgroundColor:'black',opacity:0.9,height:60,position:'fixed'}}>
         <StyledToolbar >
 
         <SocialBox sx={{}}>
-          <Facebook/>
-          <Twitter/>
-          <Instagram/>
+        <NavLink to="/" style={{color:'#4267B2'}}><Facebook/></NavLink>
+        <NavLink to="/" style={{color:'#00acee'}}><Twitter/></NavLink>
+        <NavLink to="/" style={{color:'#8a3ab9'}}><Instagram/></NavLink>
         </SocialBox>
 
         <MenuBox sx={{display:{sm:'none',xs:'none',md:'flex'}}}>
           
          { menuItems.map((item)=>(
-          <StyledItems>{item.Name}</StyledItems>
+          <>
+          <StyledItems>
+          <NavLink to={item.Link}  style={{fontSize:"16px",color:'white',textDecoration:'none'}}>{item.Name}</NavLink>
+          </StyledItems>
+          
+          </>
          ))
          
          }
@@ -73,7 +78,6 @@ function NavBar() {
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         open={open}
-        
         onClose={()=>setOpen(!open)}
         anchorOrigin={{
           vertical: 'top',
@@ -83,13 +87,18 @@ function NavBar() {
           vertical: 'top',
           horizontal: 'left',
         }}
-        sx={{mt:6,display:{md:"none"}}}
+        sx={{display:{md:"none"}}}
       >
-        <Box sx={{width:{xs:180,md:300},height:"100%",}}>
+        <Box sx={{width:{xs:180,sm:300,borderRadius:15},height:"100%",}}>
           { menuItems.map((item)=>(
             <>
-          <MenuItem  sx={{"&:hover":{color:"white",backgroundColor:'black'}}}>{item.Name} </MenuItem>
-          <Divider/>
+            
+
+            <NavLink to={item.Link}  style={{fontSize:"16px",color:'black',textDecoration:'none'}}>
+              <MenuItem sx={{"&:hover":{color:'white',backgroundColor:'black'}}}>{item.Name}</MenuItem>  
+              <Divider/>
+            </NavLink>
+  
           
           </>
          ))
